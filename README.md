@@ -1,6 +1,8 @@
 # SDET Challenge API
 
-A minimal Node.js Express app designed for SDET automation testing challenges.
+**🧪 Take-Home Challenge for Software Development Engineers in Test (SDET)**
+
+A TypeScript Node.js Express API with empty test files for candidates to implement comprehensive test automation.
 
 ## 🚀 Quick Start
 
@@ -38,27 +40,99 @@ Returns a JSON response with log entries for testing:
 ### GET / (Health Check)
 Returns API status and available endpoints (including documentation link).
 
-## 🧪 SDET Testing Challenge
+## 🎯 SDET Challenge Instructions
 
-This app is designed for SDET candidates to:
+**Your Task:** Complete the automated testing suite for this API.
 
-1. **Fetch logs** from the `/api/logs` endpoint
-2. **Parse and analyze** the logs using the provided `logParser.js` function
-3. **Write automated tests** that verify log parsing functionality
+### 📋 Challenge Requirements
+
+**Step 1: Setup & Exploration**
+```bash
+# Clone this repository
+git clone <repository-url>
+cd sdet-challenge
+
+# Install dependencies
+npm install
+
+# Start the application
+npm run dev
+```
+
+**Step 2: Explore the API**
+- Visit `http://localhost:3000` - health check endpoint
+- Visit `http://localhost:3000/api/logs` - logs endpoint  
+- Visit `http://localhost:3000/api-docs` - interactive API documentation
+
+**Step 3: Implement Test Cases**
+Complete the empty test files in the `tests/` directory:
+
+- `tests/api.spec.ts` - API endpoint testing
+- `tests/logParser.spec.ts` - Log parser function testing + integration
+- `tests/swagger-ui.spec.ts` - UI testing for Swagger documentation
+
+**Step 4: Test Implementation**
+```bash
+# Run your tests
+npm test
+
+# Debug tests visually
+npm run test:headed
+
+# View test report
+npm run test:report
+```
+
+**Step 5: Submit Your Solution**
+```bash
+# Commit your test implementations
+git add tests/
+git commit -m "Implement SDET test suite"
+git push origin main
+```
+
+### 🎯 What You Should Test
+
+**API Testing (`api.spec.ts`):**
+- ✅ GET `/api/logs` returns correct JSON structure
+- ✅ GET `/` health check returns status information  
+- ✅ Validate response schemas and status codes
+- ✅ Test error handling (404s, invalid methods)
+- ✅ Performance and concurrent request handling
+
+**Integration Testing (`logParser.spec.ts`):**
+- ✅ Fetch logs from API and parse with `countLogLevels()` function
+- ✅ Test edge cases: empty logs, invalid formats, mixed levels
+- ✅ Validate that parser correctly counts INFO, ERROR, WARN levels
+- ✅ Type safety and data validation
+
+**UI Testing (`swagger-ui.spec.ts`):**
+- ✅ Swagger documentation loads and displays correctly
+- ✅ API endpoints are documented and testable
+- ✅ Interactive "Try it out" functionality works
+- ✅ Responsive design across different viewports
+
+### 📊 Evaluation Criteria
+
+- **Test Coverage**: Comprehensive testing of all endpoints and functions
+- **Test Quality**: Clear, maintainable, and well-structured test cases
+- **Edge Cases**: Handling of error conditions and boundary cases
+- **Integration**: Tests that combine API calls with utility functions
+- **Best Practices**: Use of TypeScript, async/await, proper assertions
 
 ### Using the Log Parser
 
-```javascript
-const countLogLevels = require('./logParser');
+```typescript
+import countLogLevels, { LogLevelCounts } from '../src/logParser';
 
 // Example usage in tests:
-const logs = [
+const logs: string[] = [
   "[INFO] 2025-06-13T14:22:31Z - User logged in",
   "[ERROR] 2025-06-13T14:23:05Z - Failed to fetch profile",
   "[INFO] 2025-06-13T14:25:00Z - User logged out"
 ];
 
-const counts = countLogLevels(logs);
+const counts: LogLevelCounts = countLogLevels(logs);
 console.log(counts); // { INFO: 2, ERROR: 1 }
 ```
 
@@ -66,10 +140,18 @@ console.log(counts); // { INFO: 2, ERROR: 1 }
 
 ```
 sdet-challenge/
-├── index.js          # Express server
-├── logParser.js       # Log parsing utility function
-├── package.json       # Dependencies and scripts
-└── README.md         # This file
+├── src/
+│   ├── index.ts           # TypeScript Express server
+│   └── logParser.ts       # TypeScript log parsing utility
+├── tests/
+│   ├── api.spec.ts        # Playwright API tests
+│   ├── logParser.spec.ts  # Playwright integration tests
+│   └── swagger-ui.spec.ts # Playwright UI tests
+├── dist/                  # Compiled JavaScript (auto-generated)
+├── playwright.config.ts   # Playwright test configuration
+├── tsconfig.json         # TypeScript configuration
+├── package.json          # Dependencies and scripts
+└── README.md            # This file
 ```
 
 ## 🐳 Docker Extension (Optional)
@@ -113,21 +195,96 @@ jobs:
       - run: curl http://localhost:3000/api/logs
 ```
 
-## 🧪 Testing Ideas for SDET Candidates
+## 🧪 Playwright Testing Framework
 
-- **API Testing**: Use Swagger UI or automation tools to verify endpoint responses and status codes
-- **Interactive Testing**: Use the Swagger documentation at `/api-docs` to explore and test endpoints
-- **Log Parsing**: Test the `countLogLevels` function with various inputs
-- **Integration Testing**: Fetch logs from API and parse them with the provided function
-- **Edge Cases**: Test with malformed logs, empty arrays, different log levels
-- **Performance Testing**: Test API response times and load handling
-- **Error Handling**: Test invalid endpoints, methods, and malformed requests
-- **Schema Validation**: Verify API responses match the Swagger schema definitions
+This project includes **empty Playwright test files** for candidates to implement:
+
+### 🚀 Quick Start Testing
+```bash
+# Run all tests
+npm test
+
+# Run tests with browser UI (headed mode)
+npm run test:headed
+
+# Debug tests interactively
+npm run test:debug
+
+# View test report
+npm run test:report
+```
+
+### 📁 Test Structure
+```
+tests/
+├── api.spec.ts           # API endpoint testing
+├── logParser.spec.ts     # Log parser function testing + integration
+└── swagger-ui.spec.ts    # Browser UI testing for Swagger docs
+```
+
+### 📁 Test Files to Complete
+
+**`tests/api.spec.ts`** (Empty - implement API testing)
+**`tests/logParser.spec.ts`** (Empty - implement integration testing)  
+**`tests/swagger-ui.spec.ts`** (Empty - implement UI testing)
+
+### 🎯 Expected Test Coverage
+
+**API Testing (`api.spec.ts`):**
+- 🔲 Endpoint response validation
+- 🔲 Status code verification
+- 🔲 JSON schema validation
+- 🔲 Error handling (404, invalid methods)
+- 🔲 Performance testing (response times)
+- 🔲 Concurrent request handling
+
+**Integration Testing (`logParser.spec.ts`):**
+- 🔲 Fetch logs from API + parse with `countLogLevels()`
+- 🔲 Unit tests for log parser edge cases
+- 🔲 Data validation and type checking
+- 🔲 Invalid log format handling
+
+**UI Testing (`swagger-ui.spec.ts`):**
+- 🔲 Swagger documentation loads correctly
+- 🔲 Interactive API testing through UI
+- 🔲 Responsive design testing
+- 🔲 Cross-browser compatibility
+
+### 💡 Testing Techniques to Use
+
+- **API Testing**: Use Playwright's `request` context for pure API testing
+- **Integration Testing**: Combine API calls with utility function testing
+- **UI Testing**: Test documentation interfaces and user interactions
+- **Cross-browser Testing**: Verify functionality across Chrome, Firefox, Safari
+- **TypeScript**: Leverage type safety in your test implementations
+- **Async/Await**: Handle asynchronous operations properly
+- **Test Organization**: Use descriptive test names and proper grouping
+
+## 🔧 Development Workflow
+
+```bash
+# Development with hot reload
+npm run dev
+
+# Build TypeScript
+npm run build
+
+# Production start
+npm start
+
+# Run all tests
+npm test
+
+# Test with browser UI
+npm run test:headed
+```
 
 ## 📝 Notes
 
-- The app exports the Express app instance for testing purposes
-- Logs are hardcoded for consistency in testing scenarios
-- The `logParser.js` function is separate to allow isolated unit testing
-- Swagger documentation provides interactive API exploration and testing
-- Dependencies include Express, Swagger JSDoc, and Swagger UI Express for complete functionality 
+- **TypeScript**: Full type safety for better development experience
+- **Playwright Testing**: Comprehensive test suite covering API, integration, and UI testing
+- **Express + Swagger**: Professional API documentation with interactive testing
+- **SDET-Ready**: Multiple testing approaches demonstrated for interview scenarios
+- **CI/CD Compatible**: Playwright auto-starts server and runs tests in headless mode
+- **Cross-Platform**: Works on Windows, macOS, and Linux
+- **Multi-Browser**: Tests run on Chromium, Firefox, and WebKit 

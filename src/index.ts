@@ -1,9 +1,9 @@
-const express = require('express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+import express, { Application, Request, Response } from 'express';
+import swaggerJsdoc from 'swagger-jsdoc';
+import swaggerUi from 'swagger-ui-express';
 
-const app = express();
-const PORT = 3000;
+const app: Application = express();
+const PORT: number = 3000;
 
 // Swagger configuration
 const swaggerOptions = {
@@ -24,7 +24,7 @@ const swaggerOptions = {
       },
     ],
   },
-  apis: ['./index.js'], // Path to the API files
+  apis: ['./src/index.ts'], // Path to the API files
 };
 
 const specs = swaggerJsdoc(swaggerOptions);
@@ -69,14 +69,35 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
  *             logs:
  *               type: string
  *               example: "/api/logs"
+ *             docs:
+ *               type: string
+ *               example: "/api-docs"
  */
+
+/**
+ * Interface for the logs API response
+ */
+interface LogsResponse {
+  logs: string[];
+}
+
+/**
+ * Interface for the health check response
+ */
+interface HealthResponse {
+  message: string;
+  endpoints: {
+    logs: string;
+    docs: string;
+  };
+}
 
 /**
  * @swagger
  * /api/logs:
  *   get:
  *     summary: Retrieve application logs
- *     description: Returns a collection of log entries for SDET testing. Each log entry includes a level (INFO, ERROR, WARN), timestamp, and message. Use these logs with the logParser.js countLogLevels() function for testing.
+ *     description: Returns a collection of log entries for SDET testing. Each log entry includes a level (INFO, ERROR, WARN), timestamp, and message. Use these logs with the logParser.ts countLogLevels() function for testing.
  *     tags: [Logs]
  *     responses:
  *       200:
@@ -88,8 +109,8 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {
  *       500:
  *         description: Internal server error
  */
-app.get('/api/logs', (req, res) => {
-  const logs = [
+app.get('/api/logs', (req: Request, res: Response) => {
+  const logs: string[] = [
     "[INFO] 2025-06-13T14:22:31Z - User logged in",
     "[ERROR] 2025-06-13T14:23:05Z - Failed to fetch profile",
     "[INFO] 2025-06-13T14:25:00Z - User logged out"
@@ -113,7 +134,7 @@ app.get('/api/logs', (req, res) => {
  *             schema:
  *               $ref: '#/components/schemas/HealthResponse'
  */
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.json({ 
     message: 'SDET Challenge API is running',
     endpoints: {
@@ -131,4 +152,4 @@ app.listen(PORT, () => {
   console.log(`🔍 Health check: http://localhost:${PORT}/`);
 });
 
-module.exports = app; 
+export default app; 
