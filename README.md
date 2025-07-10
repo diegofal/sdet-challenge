@@ -85,10 +85,17 @@ npm run test:report
 
 **Step 5: Submit Your Solution**
 ```bash
+# Create a branch with your name (format: firstname-lastname)
+git checkout -b john-smith
+
 # Commit your test implementations
 git add tests/
 git commit -m "Implement SDET test suite"
-git push origin main
+
+# Push your branch
+git push origin john-smith
+
+# Create a pull request for review
 ```
 
 ### 🎯 What You Should Test
@@ -119,6 +126,7 @@ git push origin main
 - **Edge Cases**: Handling of error conditions and boundary cases
 - **Integration**: Tests that combine API calls with utility functions
 - **Best Practices**: Use of TypeScript, async/await, proper assertions
+- **Git Workflow**: Proper branch naming (firstname-lastname) and clean commits
 
 ### Using the Log Parser
 
@@ -278,6 +286,13 @@ npm test
 # Test with browser UI
 npm run test:headed
 ```
+
+### 📋 Submission Requirements
+
+- **Branch Naming**: Create a branch with format `firstname-lastname` (e.g., `john-smith`)
+- **Commit Message**: Use clear, descriptive commit messages
+- **Pull Request**: Submit via pull request for code review
+- **Test Coverage**: All test files must have meaningful implementations
 
 ## 📝 Notes
 
