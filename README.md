@@ -35,6 +35,14 @@ git --version
 - Git 2.30+
 - Modern web browser (Chrome, Firefox, or Safari)
 
+### 🚨 Troubleshooting
+
+**Common Issues:**
+- **Node.js too old**: Use [nvm](https://github.com/nvm-sh/nvm) to install/switch Node.js versions
+- **npm permission errors**: Consider using [nvm](https://github.com/nvm-sh/nvm) or [configure npm](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+- **Git not configured**: Run `git config --global user.name "Your Name"` and `git config --global user.email "your@email.com"`
+- **Port 3000 in use**: Stop other services or change the port in the application
+
 ## 🚀 Quick Start
 
 ```bash
@@ -98,19 +106,19 @@ npm install
 npm run dev
 ```
 
-**Step 2: Explore the API**
+**Step 3: Explore the API**
 - Visit `http://localhost:3000` - health check endpoint
 - Visit `http://localhost:3000/api/logs` - logs endpoint  
 - Visit `http://localhost:3000/api-docs` - interactive API documentation
 
-**Step 3: Implement Test Cases**
+**Step 4: Implement Test Cases**
 Complete the empty test files in the `tests/` directory:
 
 - `tests/api.spec.ts` - API endpoint testing
 - `tests/logParser.spec.ts` - Log parser function testing + integration
 - `tests/swagger-ui.spec.ts` - UI testing for Swagger documentation
 
-**Step 4: Test Implementation**
+**Step 5: Test Implementation**
 ```bash
 # Run your tests
 npm test
@@ -122,7 +130,7 @@ npm run test:headed
 npm run test:report
 ```
 
-**Step 5: Submit Your Solution**
+**Step 6: Submit Your Solution**
 ```bash
 # Create a branch with your name (format: firstname-lastname)
 git checkout -b john-smith
