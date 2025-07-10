@@ -349,4 +349,5 @@ npm run test:headed
 - **SDET-Ready**: Multiple testing approaches demonstrated for interview scenarios
 - **CI/CD Compatible**: Playwright auto-starts server and runs tests in headless mode
 - **Cross-Platform**: Works on Windows, macOS, and Linux
-- **Multi-Browser**: Tests run on Chromium, Firefox, and WebKit 
+- **Multi-Browser**: Tests run on Chromium, Firefox, and WebKit
+- **Version Controlled**: Node.js 18+ and npm 9+ requirements enforced in package.json 

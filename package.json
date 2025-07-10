@@ -15,6 +15,10 @@
   "keywords": ["sdet", "express", "api", "logs", "testing"],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
   "dependencies": {
     "express": "^4.18.2",
     "swagger-jsdoc": "^6.2.8",
