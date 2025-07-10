@@ -4,6 +4,37 @@
 
 A TypeScript Node.js Express API with empty test files for candidates to implement comprehensive test automation.
 
+## 🛠️ Prerequisites
+
+Before starting this challenge, ensure you have the following tools installed:
+
+### Required Tools
+- **Node.js** (v18.0.0 or higher) - [Download here](https://nodejs.org/)
+- **npm** (v9.0.0 or higher) - Comes with Node.js
+- **Git** (v2.30.0 or higher) - [Download here](https://git-scm.com/)
+
+### Recommended Tools
+- **Visual Studio Code** - [Download here](https://code.visualstudio.com/)
+- **Playwright VS Code Extension** - For test debugging and development
+
+### Verify Installation
+```bash
+# Check Node.js version
+node --version
+
+# Check npm version  
+npm --version
+
+# Check Git version
+git --version
+```
+
+**Minimum Requirements:**
+- Node.js 18+
+- npm 9+
+- Git 2.30+
+- Modern web browser (Chrome, Firefox, or Safari)
+
 ## 🚀 Quick Start
 
 ```bash
@@ -46,7 +77,15 @@ Returns API status and available endpoints (including documentation link).
 
 ### 📋 Challenge Requirements
 
-**Step 1: Setup & Exploration**
+**Step 1: Verify Prerequisites**
+```bash
+# Verify you have the required tools (see Prerequisites section above)
+node --version  # Should be v18.0.0+
+npm --version   # Should be v9.0.0+
+git --version   # Should be v2.30.0+
+```
+
+**Step 2: Setup & Exploration**
 ```bash
 # Clone this repository
 git clone <repository-url>
